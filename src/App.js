@@ -79,7 +79,7 @@ class App extends Component {
     saveEdit(brand, model, color, license, id){
         console.log(brand, model, color, license)
 
-        const vehicles = this.getVehicles();
+        let vehicles = this.getVehicles();
 
         vehicles = vehicles.map( v => {
             if(v.id === id){
@@ -88,6 +88,8 @@ class App extends Component {
                 v.color = color;
                 v.license = license;
             }
+
+            return v;
         })
 
         this.setState({ vehicles })

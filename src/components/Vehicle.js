@@ -37,6 +37,10 @@ class Vehicle extends Component {
 
         this.props.saveEdit(brand, model, color, license, id);
 
+        this.setState({ 
+            isEdit: false
+        })
+
     }
 
     render() {
