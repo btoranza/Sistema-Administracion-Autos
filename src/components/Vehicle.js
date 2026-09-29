@@ -52,16 +52,16 @@ class Vehicle extends Component {
             <tbody>
                 {this.state.isEdit ? ( 
                     <tr className='editInputs' id={id}>
-                    <td>
+                    <td data-label='Marca'>
                         <input type='text' placeholder='Marca' ref={brandInput => this.brandInput = brandInput} required defaultValue={brand}></input>
                     </td>
-                    <td>
+                    <td data-label='Modelo'>
                         <input type='text' placeholder='Modelo' ref={modelInput => this.modelInput = modelInput} required defaultValue={model}></input>
                     </td>
-                    <td>
+                    <td data-label='Color'>
                         <input type='text' placeholder='Color' ref={colorInput => this.colorInput = colorInput} required defaultValue={color}></input>
                     </td>
-                    <td>
+                    <td data-label='Patente'>
                         <input type='text' placeholder='Patente' ref={licenseInput => this.licenseInput = licenseInput} required defaultValue={license}></input>
                     </td>
                     <td className='editTd'>
@@ -78,10 +78,10 @@ class Vehicle extends Component {
                 ) 
                     :
                 <tr id={id}>
-                    <td>{brand}</td>
-                    <td>{model}</td>
-                    <td>{color}</td>
-                    <td>{license}</td>
+                    <td data-label='Marca'>{brand}</td>
+                    <td data-label='Modelo'>{model}</td>
+                    <td data-label='Color'>{color}</td>
+                    <td data-label='Patente'>{license}</td>
                     <td className='editTd' onClick={this.onEdit}>
                         <button className='editBtn'>Editar 
                             <i className="material-icons">edit</i>

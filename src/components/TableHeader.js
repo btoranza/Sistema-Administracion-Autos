@@ -3,7 +3,7 @@ import React from 'react';
 const Hero = () => {
     return (
 
-    <tbody>
+    <tbody className='tableHeader'>
         <tr>
             <th>MARCA</th>
             <th>MODELO</th>

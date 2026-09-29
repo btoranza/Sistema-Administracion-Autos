@@ -48,18 +48,24 @@
   display: flex;
   margin-top: 15px;
   justify-content: space-around;
-  margin-left: 12px;
+  padding: 0 12px;
+  box-sizing: border-box;
 
   #form{
     
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 10px;
+    width: 100%;
     
     input {
+        flex: 1 1 140px;
+        min-width: 0;
+        box-sizing: border-box;
         height: 40px;
         font-size: 1em;
         font-family: 'Lexend Peta', sans-serif;
-        margin-right: 10px;
         border: 2px solid black;
         padding-left: 12px;
         text-transform: uppercase;
@@ -139,10 +145,138 @@
 
 .editInputs {
     input {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
         height: 30px;
         font-size: 0.7em;
         font-family: 'Lexend Peta', sans-serif;
         padding-left: 5px;
         text-transform: uppercase;
     }
+}
+
+// Mobile: the table becomes a list of cards and the form stacks vertically
+@media (max-width: 768px) {
+  #hero {
+    height: 120px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+
+    h1 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+  }
+
+  #addBar {
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+
+    #form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      width: 100%;
+
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        font-size: 16px; // avoids the automatic zoom on iOS
+      }
+
+      button {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+        gap: 8px;
+        line-height: 1;
+
+        i {
+          margin: 0;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  #dataContent {
+    padding: 0 16px 24px;
+
+    table, th, td {
+      border: none;
+    }
+  }
+
+  .tableContent {
+    &, tbody, tr, td {
+      display: block;
+    }
+
+    .tableHeader {
+      display: none;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 12px;
+      background-color: rgba(0, 0, 0, 0.08);
+      border: 2px solid black;
+    }
+
+    td {
+      height: auto;
+      padding: 8px;
+      text-align: left;
+      background-color: rgba(0, 0, 0, 0.12);
+      overflow-wrap: anywhere;
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        font-family: 'Lexend Exa', sans-serif;
+        font-size: 0.65em;
+        opacity: 0.7;
+      }
+    }
+
+    .editTd, .deleteTd {
+      width: auto;
+      padding: 0;
+      background-color: transparent;
+      &::before { content: none; }
+    }
+
+    .editBtn, .deleteBtn {
+      width: 100%;
+      min-height: 44px; // comfortable touch target
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 8px;
+      line-height: 1;
+
+      i {
+        margin: 0;
+        line-height: 1;
+      }
+    }
+  }
+
+  .editInputs input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+    font-size: 16px;
+  }
 }
